@@ -14,9 +14,12 @@ knitr::opts_chunk$set(echo = TRUE, dpi = 300)
 ```{r loadPackages, message=FALSE, echo=FALSE}
 #Load packages with groundhog to improve stability
 library("groundhog")
-pkgs <- c("ggplot2", "knitr", "janitor", "dplyr", "kableExtra")
+pkgs <- c("ggplot2", "knitr", "janitor", "dplyr", "kableExtra", "here")
 groundhog.library(pkgs, '2023-11-28')
 ```
+## GitHub Link
+
+[Link to GitHub](https://github.com/conorlong5/STAT184-Activity10)
 
 ## Collatz Conjecture
 
@@ -136,6 +139,13 @@ priceStats %>% kable(
 Throughout this course, I have learned how to use R to make data visualizations, summary tables, and use R for statistical analysis, just to name a few. I have learned what makes a bad data visualization from a great one, and how I should construct these visualizations using packages like ggplot2. I have learned how to create tables, specifically summary and frequency tables, using various R packages. One thing that I really enjoyed was getting data from a website to use. I found that to be useful in any personal projects that I might make in my free time. Overall, I feel more comfortable using R after being in this course.
 
 Adding onto this, I now understand and know how to use GitHub, something that I've wanted to know how to use but never actually looked into. This is a good tool to have for the future.
+
+## Image of File Directory
+
+```{r insertImage, message=FALSE, echo=FALSE}
+# include_graphics will insert an image into the rmd file, using the relative path
+knitr::include_graphics("../filePathProof.png")
+```
 
 \newpage
 # Code Appendix
