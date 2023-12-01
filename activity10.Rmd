@@ -11,12 +11,18 @@ output:
 knitr::opts_chunk$set(echo = TRUE, dpi = 300)
 ```
 
+```{r loadPackages, message=FALSE, echo=FALSE}
+#Load packages with groundhog to improve stability
+library("groundhog")
+pkgs <- c("ggplot2", "knitr", "janitor", "dplyr", "kableExtra")
+groundhog.library(pkgs, '2023-11-28')
+```
+
 ## Collatz Conjecture
 
 The collatz conjecture asks if repeating the same arithmetic operations will turn every positive integer into 1. These operations are: divide the integer by 2 if even, multiply the integer by 3 and add 1 if it's odd. The question is, what is the distribution of "stopping times" for the first 10,000 positive integers. "Stopping times" refers to the number of times the function needs to be recursively invoked. Below is a histogram of 10,000 positive integers and the stopping times on the x-axis with their frequency on the y-axis. Based on the histogram, we can see that very few numbers require over 200 stopping times. The graph shows that the highest frequency of stopping times is around 50, with just over a frequency of 2,000. So out of 10,000 numbers, close to a quarter of them require around 50 stopping times according to the collatz conjecture.
 
 ```{r collatz, echo=FALSE}
-library(ggplot2)
 runCollatz <- function(num, count = 0) {
   if(num == 1) {
     # Since num equals 1, return the final stopping time
@@ -59,8 +65,7 @@ ggplot(data = collatzData, mapping = aes(x = value)) +
 
 By using the diamonds data set, we can use data visualizations to see what impacts the price of a diamond. By looking at the price, carat, and clarity of a diamond, we can use ggplot2 to create a data visualization showing what effect the carat and clarity of a diamond has on the price. Below shows a visualization with price on the y-axis, carat on the x-axis, and each color represents a different clarity. Based on the graph, we can see that diamonds with a clarity of IF do not need a high carat in order for the price to be high, compared to the clarity I1, which shows the highest carat measurement out of all the diamonds in this data set.
 
-```{r diamondsVisualization, echo=FALSE}
-library(ggplot2)
+```{r diamondsVisualization, message=FALSE, echo=FALSE}
 data(diamonds)
 ggplot(data = diamonds, mapping = aes(x=carat, y=price, color=clarity)) + 
   geom_smooth(se = FALSE) + 
@@ -74,15 +79,8 @@ Using a summary table, we can compare price with cut. Based on the table, we can
 that minimum and maximum prices are compareable between each cut. We can also see that 
 the premium cut has the highest mean and standard deviation. 
 
-```{r diamondsSummary, echo=FALSE}
-# Import libraries
-library(knitr)
-library(janitor)
-library(dplyr)
-library(kableExtra)
-
+```{r diamondsSummary, message=FALSE, echo=FALSE}
 # Import data
-
 data("diamonds", package = "ggplot2")
 
 # Create the data table
@@ -129,3 +127,4 @@ priceStats %>% kable(
 ## Course Takeaways
 
 Throughout this course, I have learned how to use R to make data visualizations, summary tables, and use R for statistical analysis, just to name a few. I have learned what makes a bad data visualization from a great one, and how I should construct these visualizations using packages like ggplot2. I have learned how to create tables, specifically summary and frequency tables, using various R packages. One thing that I really enjoyed was getting data from a website to use. I found that to be useful in any personal projects that I might make in my free time. Overall, I feel more comfortable using R after being in this course.
+
